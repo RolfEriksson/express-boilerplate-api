@@ -1,5 +1,5 @@
 {
-  "name": "boilerplate-api",
+  "name": "express-boilerplate-api",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.js",
