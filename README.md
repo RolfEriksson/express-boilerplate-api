@@ -31,7 +31,7 @@ npm run develop
 
 ## Credits
  
-Rolf Eriksson (@RolfErikssonh)
+Rolf Eriksson (@RolfEriksson)
  
 ## License
  
