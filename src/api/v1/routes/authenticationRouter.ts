@@ -7,6 +7,6 @@ export enum AuthenticationRoutes {
 
 const authenticationRouter = Router();
 
-authenticationRouter.get(AuthenticationRoutes.ROOT, validateCredentials);
+authenticationRouter.post(AuthenticationRoutes.ROOT, validateCredentials);
 
 export { authenticationRouter };

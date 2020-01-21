@@ -1,12 +1,17 @@
 import { Errback, Request, Response } from "express";
+import { ErrorHandler } from "../helpers/error";
 
-const getToken = () => "TOKEN_FOOO__BARRRR";
+const getToken = async () => "TOKEN_FOOO__BARRRR";
 
-const validateCredentials = (req: Request, res: Response, next: Errback) => {
+const validateCredentials = async (req: Request, res: Response, next: Errback) => {
   try {
-    console.log(req.body);
+    const { username, password} = req.body;
+    if (!username || !password) {
+      throw new ErrorHandler(422, "Missing required username and password fields");
+    }
+    const token = await getToken();
     res.send({
-      token: getToken()
+      token
     });
   } catch (error) {
     next(error);
