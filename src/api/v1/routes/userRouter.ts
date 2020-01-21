@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getMovies } from "../controllers/getMovies";
+import { getUsers } from "../controllers/userController";
 
 export enum UserRoutes {
     ROOT = "/"
@@ -7,6 +7,6 @@ export enum UserRoutes {
 
 const userRouter = Router();
 
-userRouter.get(UserRoutes.ROOT, getMovies);
+userRouter.get(UserRoutes.ROOT, getUsers);
 
 export { userRouter };
