@@ -6,7 +6,9 @@
   "scripts": {
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
+    "watch-ts": "tsc -w",
     "start": "node dist/server.js",
+    "develop": "concurrently -k \"npm run watch-ts\" \"nodemon dist/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "RolfEriksson",
@@ -16,6 +18,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "concurrently": "^5.0.2",
     "nodemon": "^2.0.2",
     "tslint": "^5.20.1",
     "typescript": "^3.7.5"
