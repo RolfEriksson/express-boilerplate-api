@@ -1,14 +1,14 @@
-import { Errback, Request, Response } from "express";
+import { Request, Response } from "express";
 import { ErrorHandler } from "../helpers/error";
 import models from "../models";
 
-export const  getUsers = (req: Request, res: Response) => {
-  res.send({
-    users: [
-      { id: 1, name: "Rolf Eriksson" },
-      { id: 2, name: "Juan" }
-    ]
-  });
+export const  getUsers = async (req: Request, res: Response) => {
+    try {
+      const foundUsers = await models.User.find({});
+      res.send(foundUsers);
+    } catch (error) {
+      throw new ErrorHandler(400, error.message);
+    }
 };
 
 export const createUser = async (req: Request, res: Response): Promise<void> => {
