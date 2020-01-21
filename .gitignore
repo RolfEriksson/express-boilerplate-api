@@ -12,6 +12,8 @@ Desktop.ini
 .directory
 *~
 
+# Ignore built ts files
+dist/**/*
 
 # npm
 node_modules
