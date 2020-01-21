@@ -7,4 +7,4 @@ export const  getMovies = (req: Request, res: Response) => {
       { id: 2, name: "Queen of Katwe" }
     ]
   });
-}
+};
