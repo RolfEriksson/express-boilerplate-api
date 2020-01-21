@@ -1,2 +1,2 @@
-export * from "./movieRouter";
+export * from "./userRouter";
 export * from "./authenticationRouter";
