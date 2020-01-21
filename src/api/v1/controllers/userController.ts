@@ -13,9 +13,13 @@ export const  getUsers = (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
-    const createdUser = new models.User({ username: "USER" });
-    await createdUser.save();
-    res.send();
+    const { username, password } = req.body;
+    if(!username || !password) {
+      throw new Error("MISSING_USERNAME_PASSWORD");
+    }
+    const instancedUser = new models.User({ username, password });
+    const createdUser = await instancedUser.save();
+    res.send(createdUser);
   } catch (error) {
     throw new ErrorHandler(400, "Error creating user");
   }
