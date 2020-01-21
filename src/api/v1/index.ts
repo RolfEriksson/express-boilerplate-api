@@ -8,7 +8,7 @@ import { ErrorHandler, handleError } from "./helpers/error";
 
 export enum MIDDLEWARE_ROUTES {
     API_DOCS = "/api-docs",
-    USER = "/user",
+    USER = "/users",
     AUTHENTICATION = "/authentication"
 }
 
