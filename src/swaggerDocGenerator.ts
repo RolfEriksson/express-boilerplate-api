@@ -1,7 +1,7 @@
 import swaggerJSDoc from "swagger-jsdoc";
 
 const optionsV1 = {
-  apis: ["src/api/v1/routes/*Router.ts"],
+    apis: ["src/api/v1/routes/*Router.ts", "src/api/v1/models/*"],
   swaggerDefinition: {
     info: {
         contact: {

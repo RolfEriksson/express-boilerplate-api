@@ -20,6 +20,27 @@ export interface IUser extends mongoose.Document {
   validatePassword: (password: string) => {};
 }
 
+/**
+ * @swagger
+ *  components:
+ *    schemas:
+ *      User:
+ *        type: object
+ *        required:
+ *          - email
+ *          - password
+ *          - salt
+ *        properties:
+ *          email:
+ *            type: string
+ *            format: email
+ *            description: Email for the user, needs to be unique.
+ *          password:
+ *            type: string
+ *          salt:
+ *            type: string
+ *            description: Used to create encrypted password..
+ */
 const userSchema = new mongoose.Schema({
     password: String,
     salt: String,
