@@ -22,9 +22,7 @@ const validateCredentials = async (req: Request, res: Response, next: Errback) =
       throw new ErrorHandler(422, "Missing required username and password fields");
     }
     const token = await getToken(username, password);
-    res.send({
-      token
-    });
+    res.send(token);
   } catch (error) {
     next(error);
   }

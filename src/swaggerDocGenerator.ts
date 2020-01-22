@@ -20,7 +20,7 @@ const optionsV1 = {
     openapi: "3.0.0",
     servers: [
       {
-        url: "http://localhost:3000/api/v1"
+        url: "http://localhost:5000/api/v1"
       },
       {
           url: "https://express-boilerplate-api.herokuapp.com/api/v1"
