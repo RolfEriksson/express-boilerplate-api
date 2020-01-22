@@ -11,6 +11,18 @@ export const  getUsers = async (req: Request, res: Response) => {
     }
 };
 
+export const getMe = async (req: Request, res: Response) => {
+  try {
+    const { user } = req;
+    if (!user) {
+      throw new Error("NO_USER_ASSOCIATED_TO_TOKEN");
+    }
+    res.send(user);
+  } catch (error) {
+    throw new ErrorHandler(404, error.message);
+  }
+};
+
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, password } = req.body;
