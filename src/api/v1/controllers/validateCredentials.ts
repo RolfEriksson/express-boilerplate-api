@@ -1,12 +1,15 @@
 import { Errback, Request, Response } from "express";
 import { ErrorHandler } from "../helpers/error";
+import models from "../models";
 
 const getToken = async (username: string, password: string) => {
   try {
-    if (!(username === "rolf.eriksson" && password === "password1234")) {
+    const user = await models.User.findOne({ username });
+    if (!user) {
       throw new Error("INCORRECT_CREDENTIALS");
     }
-    return "TOKENASDASDASD";
+    // user.toAuthJSON();
+    return user.toAuthJSON();
   } catch (error) {
     throw new ErrorHandler(400, error.message);
   }

@@ -10,9 +10,6 @@ const userRouter = AsyncRouter();
 
 userRouter.get(UserRoutes.ROOT, getUsers);
 userRouter.post(UserRoutes.ROOT, createUser);
-userRouter.get("/test", auth.required, (req, res) => {
-    res.send({ foo: "bar" });
-});
 // userRouter.get("")
 
 export { userRouter };
