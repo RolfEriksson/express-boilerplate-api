@@ -29,7 +29,6 @@ export interface IUser extends mongoose.Document {
  *        required:
  *          - username
  *          - password
- *          - salt
  *        properties:
  *          username:
  *            type: string
@@ -40,6 +39,15 @@ export interface IUser extends mongoose.Document {
  *        example:
  *           username: rolf.eriksson
  *           password: password1234
+ *      Token:
+ *        type: object
+ *        properties:
+ *          _id:
+ *            type: string
+ *          username:
+ *            type: string
+ *          token:
+ *            type: string
  */
 const userSchema = new mongoose.Schema({
     password: String,

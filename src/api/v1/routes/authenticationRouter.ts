@@ -28,11 +28,11 @@ const authenticationRouter = Router();
  *              $ref: '#/components/schemas/User'
  *      responses:
  *        "200":
- *          description: A user schema
+ *          description: When valid credentials, contains the token used to transact with auth enabled routes.
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/components/schemas/Token'
  */
 authenticationRouter.post(AuthenticationRoutes.ROOT, validateCredentials);
 
