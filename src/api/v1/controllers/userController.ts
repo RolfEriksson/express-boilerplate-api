@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ErrorHandler } from "../helpers/error";
+import { IRequestWithUser } from "../interfaces/RequestInterfaces";
 import models from "../models";
 
 export const  getUsers = async (req: Request, res: Response) => {
@@ -11,7 +12,7 @@ export const  getUsers = async (req: Request, res: Response) => {
     }
 };
 
-export const getMe = async (req: Request, res: Response) => {
+export const getMe = async (req: IRequestWithUser, res: Response) => {
   try {
     const { user } = req;
     if (!user) {
