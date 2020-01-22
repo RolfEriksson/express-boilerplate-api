@@ -4,8 +4,8 @@ import models from "../models";
 
 const getToken = async (username: string, password: string) => {
   try {
-    const user = await models.User.findOne({ username, password });
-    if (!user) {
+    const user = await models.User.findOne({ username });
+    if (!user || !user.validatePassword(password)) {
       throw new Error("INCORRECT_CREDENTIALS");
     }
     // user.toAuthJSON();

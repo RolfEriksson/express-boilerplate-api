@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
@@ -15,12 +16,13 @@ export interface IUser extends mongoose.Document {
   };
   generateJWT: () => {};
   toAuthJSON: () => {};
+  setPassword: (password: string) => {};
+  validatePassword: (password: string) => {};
 }
 
 const userSchema = new mongoose.Schema({
-    password: {
-        type: String
-    },
+    password: String,
+    salt: String,
     username: {
         type: String,
         unique: true
@@ -40,6 +42,16 @@ userSchema.methods.generateJWT = function() {
     },
     process.env.JWT_SECRET
   );
+};
+
+userSchema.methods.setPassword = function(password: string) {
+  this.salt = crypto.randomBytes(16).toString("hex");
+  this.password = crypto.pbkdf2Sync(password, this.salt, 10000, 512, "sha512").toString("hex");
+};
+
+userSchema.methods.validatePassword = function(password: string) {
+  const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, "sha512").toString("hex");
+  return this.password === hash;
 };
 
 userSchema.methods.toAuthJSON = function() {

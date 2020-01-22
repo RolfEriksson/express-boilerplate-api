@@ -31,6 +31,7 @@ export const createUser = async (req: Request, res: Response): Promise<void> => 
       throw new Error("MISSING_USERNAME_PASSWORD");
     }
     const instancedUser = new models.User({ username, password });
+    instancedUser.setPassword(password);
     const createdUser = await instancedUser.save();
     res.send(createdUser);
   } catch (error) {
