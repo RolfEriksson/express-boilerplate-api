@@ -15,14 +15,18 @@ const getTokenFromHeaders = (req: Request, tokenRequired?: boolean) => {
   return null;
 };
 
+const secretCallback = (req: Request, payload: {}, done: (err: any, secret: string) => void) => {
+  done(null, process.env.JWT_SECRET);
+};
+
 export const auth = {
     optional: jwt({
         credentialsRequired: false,
         getToken: (req) => getTokenFromHeaders(req),
-        secret: "secret"
+        secret: secretCallback
     }),
     required: jwt({
         getToken: (req) => getTokenFromHeaders(req, true),
-        secret: "secret"
+        secret: secretCallback
     }),
 };

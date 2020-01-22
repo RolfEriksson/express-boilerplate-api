@@ -14,7 +14,7 @@ export const  getUsers = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { username, password } = req.body;
-    if(!username || !password) {
+    if (!username || !password) {
       throw new Error("MISSING_USERNAME_PASSWORD");
     }
     const instancedUser = new models.User({ username, password });
