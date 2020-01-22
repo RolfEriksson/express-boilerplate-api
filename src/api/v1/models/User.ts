@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
 // Not sure if best way of typing.
-export interface UserI extends mongoose.Document {
+export interface IUser extends mongoose.Document {
   password: {
     type: string;
     unique: boolean;
@@ -50,6 +50,6 @@ userSchema.methods.toAuthJSON = function() {
   };
 };
 
-const User = mongoose.model<UserI>("User", userSchema);
+const User = mongoose.model<IUser>("User", userSchema);
 
 export default User;
