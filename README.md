@@ -4,10 +4,10 @@ A simple boilerplate for bootstrapping an Express + Typescript + Mongo API.
 
 ## Installation
 
-Use NPM to install the dependencies.
+Install dependencies.
 
 ```bash
-npm install
+yarn
 ```
 
 Create an .env file at the root.
@@ -27,7 +27,7 @@ JWT_SECRET=XXXXXXXX
 
 To develop (simultaneously watches for changes in typescript files, and serves them with nodemon)
 ```bash
-npm run develop
+yarn run develop
 ```
 
 ## Credits
